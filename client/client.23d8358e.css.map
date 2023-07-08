@@ -1,11 +1,11 @@
 {
   "version": 3,
-  "file": "main.372004754.css",
+  "file": "client.23d8358e.css",
   "sources": [
-    "../../../../../../../src/components/layout/Navbar.html",
-    "../../../../../../../src/components/layout/Footer.html",
-    "../../../../../../../src/routes/_layout.html",
-    "../../../../../../../src/routes/_error.html"
+    "../../../../../../src/components/layout/Navbar.html",
+    "../../../../../../src/components/layout/Footer.html",
+    "../../../../../../src/routes/_layout.html",
+    "../../../../../../src/routes/_error.html"
   ],
   "sourcesContent": [
     "<svelte:window bind:innerWidth=\"innerWidth\" />\n\n<nav class=\"navbar is-fixed-top is-transparent\"\n  role=\"navigation\"\n  aria-label=\"main navigation\"\n  class:is-primary=\"segment === undefined && (!menuOpen)\"\n>\n  <div class=\"navbar-brand\">\n    <div role=\"button\" class=\"navbar-burger burger\" aria-label=\"menu\" aria-expanded=\"false\"\n      on:click=\"toggleMenu()\"\n      class:is-active=\"menuOpen\"\n    >\n      <span aria-hidden=\"true\"></span>\n      <span aria-hidden=\"true\"></span>\n      <span aria-hidden=\"true\"></span>\n    </div>\n  </div>\n\n  {#if menuOpen || desktop}\n    <div class=\"navbar-menu\"\n      class:is-active=\"menuOpen\"\n      transition:slide='{ duration: desktop ? 0 : 300 }'\n      on:click=\"set({ menuOpen: false })\"\n    >\n      <div class=\"navbar-start\">\n        <a class=\"navbar-item\" rel=prefetch href=\".\" class:is-active=\"segment === undefined\">\n          About\n        </a>\n        <a class=\"navbar-item\" rel=prefetch href=\"https://hechenbros.com\" target=\"_blank\">\n          Hechenbros\n        </a>\n        <a class=\"navbar-item\" rel=prefetch href=\"open-source\" class:is-active=\"segment === 'open-source'\">\n          Open Source\n        </a>\n      </div>\n\n      <div class=\"navbar-end\">\n        <div class=\"navbar-item\">\n          <a class=\"button\" href=\"{path}?contact\" sapper-noscroll class:is-primary=\"segment !== undefined\">\n            Contact\n          </a>\n        </div>\n      </div>\n    </div>\n  {/if}\n  {#if menuOpen && !desktop}\n    <div class=\"menu-overlay\" on:click=\"set({ menuOpen: false })\" transition:fade='{ duration: 100 }'></div>\n  {/if}\n</nav>\n\n<style>/* Bulma Utilities */\n.navbar .button {\n  border-width: 0;\n}\n\n.menu-overlay {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.2);\n}</style>\n\n<script>\n  import { slide, fade } from 'svelte-transitions';\n\n  export default {\n    data() {\n      return {\n        menuOpen: false,\n      };\n    },\n    computed: {\n      desktop({ innerWidth }) {\n        return innerWidth > 400; // $navbar-breakpoint\n      },\n    },\n    methods: {\n      toggleMenu() {\n        this.set({ menuOpen: !this.get().menuOpen });\n      },\n    },\n    transitions: {\n      slide,\n      fade,\n    },\n  };\n</script>\n",
