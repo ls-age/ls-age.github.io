@@ -1,0 +1,1 @@
+{"version":3,"file":"chunk.d9923d24.js","sources":["../../../src/components/utils/PageMeta.html"],"sourcesContent":["<svelte:head>\n  <title>{title} · ls-age</title>\n  <meta name=\"Description\" content={description}>\n</svelte:head>\n"],"names":["title","description"],"mappings":"gOACUA,6GAC0BC,sEAD1BD,mEAC0BC"}
